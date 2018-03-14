@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {VERSION} from '../version';
 
 @Component({
     selector: 'my-app',
@@ -6,6 +7,7 @@ import { Component } from '@angular/core';
     styleUrls: ['./styles/app.component.css']
 })
 export class AppComponent {
+    version= VERSION;
     name= '';
     count: number=0;
     increase() : void {

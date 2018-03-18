@@ -3,7 +3,10 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "webpack-dev-server --hot --open",
-    "build": "webpack"
+    "build": "webpack",
+    "release:major": "changelog -M && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version major && git push origin && git push origin --tags",
+    "release:minor": "changelog -m && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version minor && git push origin && git push origin --tags",
+    "release:patch": "changelog -p && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version patch && git push origin && git push origin --tags"
   },
   "dependencies": {
     "@angular/common": "~5.0.0",
@@ -16,17 +19,18 @@
     "core-js": "^2.4.1",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.14",
-    "mysql":"^2.15.0"
+    "mysql": "^2.15.0"
   },
   "devDependencies": {
     "@types/node": "^8.0.47",
-    "typescript": "^2.6.0",
-    "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.9.1",
     "angular2-template-loader": "^0.6.2",
-    "awesome-typescript-loader":"^3.3.0",
-    "uglifyjs-webpack-plugin":"^1.0.1",
+    "awesome-typescript-loader": "^3.3.0",
+    "generate-changelog": "^1.7.0",
+    "html-loader": "^0.5.1",
     "raw-loader": "^0.5.1",
-    "html-loader":"^0.5.1"
+    "typescript": "^2.6.0",
+    "uglifyjs-webpack-plugin": "^1.0.1",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.9.1"
   }
 }

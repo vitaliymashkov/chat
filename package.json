@@ -1,9 +1,12 @@
 {
   "name": "chat",
-  "version": "0.0.1",
+  "version": "0.1.38",
   "scripts": {
     "dev": "webpack-dev-server --hot --open",
-    "build": "webpack"
+    "build": "webpack",
+    "release:major": "changelog -M && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version major && git push origin && git push origin --tags",
+    "release:minor": "changelog -m && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version minor && git push origin && git push origin --tags",
+    "release:patch": "changelog -p && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version patch && git push origin && git push origin --tags"
   },
   "dependencies": {
     "@angular/common": "~5.0.0",
@@ -22,7 +25,7 @@
     "@types/node": "^8.0.47",
     "angular2-template-loader": "^0.6.2",
     "awesome-typescript-loader": "^3.3.0",
-    "changelog-maker": "^2.2.7",
+    "generate-changelog": "^1.7.0",
     "html-loader": "^0.5.1",
     "raw-loader": "^0.5.1",
     "typescript": "^2.6.0",

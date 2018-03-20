@@ -20,13 +20,14 @@
   },
   "devDependencies": {
     "@types/node": "^8.0.47",
-    "typescript": "^2.6.0",
-    "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.9.1",
     "angular2-template-loader": "^0.6.2",
     "awesome-typescript-loader": "^3.3.0",
-    "uglifyjs-webpack-plugin": "^1.0.1",
+    "changelog-maker": "^2.2.7",
+    "html-loader": "^0.5.1",
     "raw-loader": "^0.5.1",
-    "html-loader": "^0.5.1"
+    "typescript": "^2.6.0",
+    "uglifyjs-webpack-plugin": "^1.0.1",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.9.1"
   }
 }

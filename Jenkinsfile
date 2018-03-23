@@ -11,7 +11,7 @@ pipeline {
             steps {
                 sh 'npm install'
                 sh "npm version 0.1.${env.BUILD_ID}"
-                sh "echo 'export const VERSION = \"1.5.${env.BUILD_ID}\";' > 'src/version.ts'"
+                sh "echo 'export const VERSION = \"0.1.${env.BUILD_ID}\";' > 'src/version.ts'"
             }
         }
 

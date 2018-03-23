@@ -20,7 +20,7 @@ pipeline {
             steps {
                 sh 'chmod 777 ./make_changelog.sh'
                 sh 'chmod 777 ./CHANGELOG.md'
-                sh "./make_changelog.sh 0.1.${env.BUILD_ID} `head -n 1 CHANGELOG.md | awk '{print $2}'`"
+                sh "./make_changelog.sh 0.1.${env.BUILD_ID} `head -n 1 CHANGELOG.md | awk '{print \$2}'`"
             }
         }
 

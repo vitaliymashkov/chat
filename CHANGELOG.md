@@ -1,3 +1,7 @@
+# 0.1.54
+* [[`8bd223db36`](https://github.com/nodejs/node/commit/8bd223db36)] - 0.1.54 (Vitaliy Mashkov) 
+* [[`ce2516e729`](https://github.com/nodejs/node/commit/ce2516e729)] - update version to v0.1.53 (Vitaliy Mashkov) 
+* [[`ce1127aba8`](https://github.com/nodejs/node/commit/ce1127aba8)] - 0.1.53 (Vitaliy Mashkov) 
 # 0.1.53
 * [[`ce1127aba8`](https://github.com/nodejs/node/commit/ce1127aba8)] - 0.1.53 (Vitaliy Mashkov) 
 * [[`9a8e58fab8`](https://github.com/nodejs/node/commit/9a8e58fab8)] - update version to v0.1.52 (Vitaliy Mashkov) 

@@ -24,7 +24,29 @@ pipeline {
             }
         }
 
+        stage('Build') {
+            steps {
+                sh 'npm run build'
+            }
+        }
+
+        stage('Test') {
+            when {
+                expression {
+                    currentBuild.result == null || currentBuild.result == 'SUCCESS'
+                }
+            }
+            steps {
+                echo "Tests not defined"
+            }
+        }
+
         stage('Commit') {
+            when {
+                expression {
+                    currentBuild.result == null || currentBuild.result == 'SUCCESS'
+                }
+            }
             steps {
                 sh 'git add .'
                 sh "git commit -m \"update version to v0.1.${env.BUILD_ID}\""
@@ -35,23 +57,18 @@ pipeline {
             environment {
               GITUSER = credentials('f6a9e767-b103-4249-b04f-dca92e758936')
             }
+            when {
+                expression {
+                    currentBuild.result == null || currentBuild.result == 'SUCCESS'
+                }
+            }
             steps {
                 sh "git push https://${GITUSER_USR}:${GITUSER_PSW}@github.com/vitaliymashkov/chat.git"
                 sh "git push https://${GITUSER_USR}:${GITUSER_PSW}@github.com/vitaliymashkov/chat.git --tags"
             }
         }
 
-        stage('Build') {
-            steps {
-                sh 'npm run build'
-            }
-        }
 
-        stage('Test') {
-            steps {
-                echo "Tests not defined"
-            }
-        }
 
         stage('Deploy') {
             when {

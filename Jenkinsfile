@@ -25,10 +25,22 @@ pipeline {
         }
 
         stage('Commit') {
+            environment {
+                GITUSER = credentials('f6a9e767-b103-4249-b04f-dca92e758936')
+            }
             steps {
                 sh 'git add .'
                 sh "git commit -m \"update version to v0.1.${env.BUILD_ID}\""
-                sh "git push --tags origin master"
+                sh "git push https://${GITUSER_USR}:${GITUSER_PSW}@github.com/vitaliymashkov/chat.git origin v0.1.${env.BUILD_ID}"
+            }
+        }
+
+        stage('Push') {
+            environment {
+              GITUSER = credentials('f6a9e767-b103-4249-b04f-dca92e758936')
+            }
+            steps {
+                sh "git push https://${GITUSER_USR}:${GITUSER_PSW}@github.com/vitaliymashkov/chat.git origin master"
             }
         }
 

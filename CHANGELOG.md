@@ -1,3 +1,7 @@
+# 0.1.48
+* [[`412834d1f9`](https://github.com/nodejs/node/commit/412834d1f9)] - 0.1.48 (Vitaliy Mashkov) 
+* [[`8afa97a6a8`](https://github.com/nodejs/node/commit/8afa97a6a8)] - update version to v0.1.19 (Vitaliy Mashkov) 
+* [[`66d9e4c69b`](https://github.com/nodejs/node/commit/66d9e4c69b)] - 0.1.19 (Vitaliy Mashkov) 
 # 0.1.19
 * [[`66d9e4c69b`](https://github.com/nodejs/node/commit/66d9e4c69b)] - 0.1.19 (Vitaliy Mashkov) 
 * [[`078ec721b8`](https://github.com/nodejs/node/commit/078ec721b8)] - update jenkins pipeline script (Vitaliy Mashkov) 

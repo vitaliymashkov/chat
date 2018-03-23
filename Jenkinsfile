@@ -28,6 +28,7 @@ pipeline {
             steps {
                 sh 'git add .'
                 sh "git commit -m \"update version to v0.1.${env.BUILD_ID}\""
+                sh "git push --tags origin master"
             }
         }
 

@@ -1,3 +1,10 @@
+# 0.1.19
+* [[`66d9e4c69b`](https://github.com/nodejs/node/commit/66d9e4c69b)] - 0.1.19 (Vitaliy Mashkov) 
+* [[`078ec721b8`](https://github.com/nodejs/node/commit/078ec721b8)] - update jenkins pipeline script (Vitaliy Mashkov) 
+* [[`a06957d3e1`](https://github.com/nodejs/node/commit/a06957d3e1)] - Merge remote-tracking branch 'origin/master' (Vitaliy Mashkov) 
+* [[`5d5f0bcd43`](https://github.com/nodejs/node/commit/5d5f0bcd43)] - update jenkins pipeline script (Vitaliy Mashkov) 
+* [[`f1c6a5f937`](https://github.com/nodejs/node/commit/f1c6a5f937)] - update version to v0.1.17 (Vitaliy Mashkov) 
+* [[`3cba108d3d`](https://github.com/nodejs/node/commit/3cba108d3d)] - 0.1.17 (Vitaliy Mashkov) 
 # 0.1.17
 * [[`3cba108d3d`](https://github.com/nodejs/node/commit/3cba108d3d)] - 0.1.17 (Vitaliy Mashkov) 
 * [[`1e7eba731e`](https://github.com/nodejs/node/commit/1e7eba731e)] - update jenkins pipeline script (Vitaliy Mashkov) 

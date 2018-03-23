@@ -9,7 +9,7 @@ node {
    stage('Set build num') {
        steps {
             sh 'npm install'
-            sh 'npm version 0.1.${env.BUILD_ID}''
+            sh 'npm version 0.1.${env.BUILD_ID}'
             sh 'echo "export const VERSION = \"1.5.${env.BUILD_ID}\";" > "src/version.ts"
        }
    }
@@ -44,7 +44,7 @@ node {
 
     stage('Publish to server') {
       steps {
-        echo "sshPublisher(publishers: [sshPublisherDesc(configName: 'chat', transfers: [sshTransfer(excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: 'public/', sourceFiles: 'public/**/*')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])"
+        sshPublisher(publishers: [sshPublisherDesc(configName: 'chat', transfers: [sshTransfer(excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: 'public/', sourceFiles: 'public/**/*')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
       }
     }
 }

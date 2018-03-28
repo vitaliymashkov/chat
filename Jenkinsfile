@@ -3,7 +3,7 @@ pipeline {
     agent any
     environment {
         VERSION_PREFIX = '0.1'
-        GIT_URL = 'https://github.com/vitaliymashkov/chat.git'
+        GIT_URL = 'github.com/vitaliymashkov/chat.git'
         APP_NAME = 'chat'
         BRANCH = 'master'
     }

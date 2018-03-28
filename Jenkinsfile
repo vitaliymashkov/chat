@@ -4,7 +4,7 @@ pipeline {
         VERSION_PREFIX = '0.2'
         RELEASE = '-DEV'
         GIT_URL = 'github.com/vitaliymashkov/chat'
-        BRANCH = 'master'
+        BRANCH = 'staging'
         GITUSER = credentials('f6a9e767-b103-4249-b04f-dca92e758936')
     }
     stages {
@@ -76,7 +76,11 @@ pipeline {
                 }
             }
             steps {
-                sshPublisher(publishers: [sshPublisherDesc(configName: 'chat', transfers: [sshTransfer(excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: 'public/', sourceFiles: 'public/**/*')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+                script {
+                    if (env.RELEASE == '-DEV') {
+                            sshPublisher(publishers: [sshPublisherDesc(configName: 'chat', transfers: [sshTransfer(excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: 'public/', sourceFiles: 'public/**/*')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+                    }
+                }
             }
         }
     }

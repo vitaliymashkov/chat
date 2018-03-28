@@ -12,7 +12,7 @@ pipeline {
         stage('checkout') {
             steps {
                 sh 'echo RUN CHECKOUT'
-                sh "git checkout https://${env.GITUSER_USR}:${env.GITUSER_PSW}@${env.GIT_URL} -b ${env.BRANCH} -track origin/${env.BRANCH} ./"
+                sh "git checkout https://${env.GITUSER_USR}:${env.GITUSER_PSW}@${env.GIT_URL} -b ${env.BRANCH} --track origin/${env.BRANCH} ./"
             }
 
         }

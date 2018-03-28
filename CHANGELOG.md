@@ -1,3 +1,16 @@
+# 0.2.5-DEV
+* [[`1b8dc0e751`](https://github.com/nodejs/node/commit/1b8dc0e751)] - 0.2.5-DEV (Vitaliy Mashkov) 
+* [[`87ab05284e`](https://github.com/nodejs/node/commit/87ab05284e)] - Build TEST (Vitaliy Mashkov) 
+* [[`97f68e3fdc`](https://github.com/nodejs/node/commit/97f68e3fdc)] - Build TEST (Vitaliy Mashkov) 
+* [[`63472bac12`](https://github.com/nodejs/node/commit/63472bac12)] - Build TEST (Vitaliy Mashkov) 
+* [[`dff10cdf0a`](https://github.com/nodejs/node/commit/dff10cdf0a)] - update version to v0.2.2-DEV (Vitaliy Mashkov) 
+* [[`d95b1a56f3`](https://github.com/nodejs/node/commit/d95b1a56f3)] - 0.2.2-DEV (Vitaliy Mashkov) 
+# 0.2.2-DEV
+* [[`d95b1a56f3`](https://github.com/nodejs/node/commit/d95b1a56f3)] - 0.2.2-DEV (Vitaliy Mashkov) 
+* [[`6f255983b1`](https://github.com/nodejs/node/commit/6f255983b1)] - Merge remote-tracking branch 'origin/staging' into staging (Vitaliy Mashkov) 
+* [[`f220116319`](https://github.com/nodejs/node/commit/f220116319)] - Build TEST (Vitaliy Mashkov) 
+* [[`9de4fff403`](https://github.com/nodejs/node/commit/9de4fff403)] - update version to v0.2.1-DEV (Vitaliy Mashkov) 
+* [[`8196f7b5e6`](https://github.com/nodejs/node/commit/8196f7b5e6)] - 0.2.1-DEV (Vitaliy Mashkov) 
 # 0.2.1-DEV
 * [[`8196f7b5e6`](https://github.com/nodejs/node/commit/8196f7b5e6)] - 0.2.1-DEV (Vitaliy Mashkov) 
 * [[`0c492f3c28`](https://github.com/nodejs/node/commit/0c492f3c28)] - Jenkinsfile update (Vitaliy Mashkov) 

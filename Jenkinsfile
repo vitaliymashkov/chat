@@ -70,7 +70,7 @@ pipeline {
                 }
             }
             steps {
-                sh "git push https://${GITUSER_USR}:${GITUSER_PSW}@${GIT_URL"
+                sh "git push https://${GITUSER_USR}:${GITUSER_PSW}@${GIT_URL}"
                 sh "git push https://${GITUSER_USR}:${GITUSER_PSW}@${GIT_URL} --tags"
             }
         }

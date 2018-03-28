@@ -2,7 +2,6 @@ pipeline {
     agent any
     environment {
         VERSION_PREFIX = '0.2'
-        RELEASE = '-DEV'
         GIT_URL = 'github.com/vitaliymashkov/chat'
         BRANCH = 'staging'
         GITUSER = credentials('f6a9e767-b103-4249-b04f-dca92e758936')

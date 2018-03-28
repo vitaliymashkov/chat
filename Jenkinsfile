@@ -6,12 +6,14 @@ pipeline {
         GIT_URL = 'github.com/vitaliymashkov/chat.git'
         APP_NAME = 'chat'
         BRANCH = 'master'
+        GITUSER = credentials('f6a9e767-b103-4249-b04f-dca92e758936')
     }
     stages {
         stage('checkout') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'LocalBranch', localBranch: 'master']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'f6a9e767-b103-4249-b04f-dca92e758936', name: 'origin', url: 'https://github.com/vitaliymashkov/chat.git']]])
+                sh "git checkout https://${env.GITUSER_USR}:${env.GITUSER_PSW}@${env.GIT_URL} -b ${evn.BRANCH} -track origin/master"
             }
+
         }
 
         stage('Set build num') {
@@ -61,17 +63,14 @@ pipeline {
         }
 
         stage('Push') {
-            environment {
-              GITUSER = credentials('f6a9e767-b103-4249-b04f-dca92e758936')
-            }
             when {
                 expression {
                     currentBuild.result == null || currentBuild.result == 'SUCCESS'
                 }
             }
             steps {
-                sh "git push https://${GITUSER_USR}:${GITUSER_PSW}@${env.GIT_URL}"
-                sh "git push https://${GITUSER_USR}:${GITUSER_PSW}@${env.GIT_URL} --tags"
+                sh "git push https://${env.GITUSER_USR}:${env.GITUSER_PSW}@${env.GIT_URL}"
+                sh "git push https://${env.GITUSER_USR}:${env.GITUSER_PSW}@${env.GIT_URL} --tags"
             }
         }
 

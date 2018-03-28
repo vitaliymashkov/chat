@@ -6,6 +6,7 @@ pipeline {
         GIT_URL = 'https://github.com/vitaliymashkov/chat.git'
         APP_NAME = 'chat'
         BRANCH = 'master'
+        BRANCH_FULL = '*/master'
     }
     stages {
         stage('Get ENV') {
@@ -16,7 +17,7 @@ pipeline {
         }
         stage('checkout') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/${env.BRANCH}']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'LocalBranch', localBranch: '${env.BRANCH}']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'f6a9e767-b103-4249-b04f-dca92e758936', name: 'origin', url: ${env.GIT_URL}]]])
+                checkout([$class: 'GitSCM', branches: [[name: ${env.BRANCH_FULL}]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'LocalBranch', localBranch: '${env.BRANCH}']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'f6a9e767-b103-4249-b04f-dca92e758936', name: 'origin', url: ${env.GIT_URL}]]])
             }
         }
 

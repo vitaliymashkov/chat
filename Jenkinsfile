@@ -8,6 +8,14 @@ pipeline {
         BRANCH = 'master'
     }
     stages {
+        stage('Get ENV') {
+            steps {
+                sh 'env > env.txt'
+                for (String i : readFile('env.txt').split("\r?\n")) {
+                    println i
+                }
+            }
+        }
         stage('checkout') {
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: '*/${BRANCH}']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'LocalBranch', localBranch: '${BRANCH}']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'f6a9e767-b103-4249-b04f-dca92e758936', name: 'origin', url: '${GIT_URL}']]])

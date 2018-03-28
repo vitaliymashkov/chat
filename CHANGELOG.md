@@ -1,3 +1,9 @@
+# 0.1.190
+* [[`2136d8eb93`](https://github.com/nodejs/node/commit/2136d8eb93)] - 0.1.190 (Vitaliy Mashkov) 
+* [[`33c6a3f368`](https://github.com/nodejs/node/commit/33c6a3f368)] - Merge remote-tracking branch 'origin/master' (Vitaliy Mashkov) 
+* [[`af13dc6b96`](https://github.com/nodejs/node/commit/af13dc6b96)] - Jenkinsfile update (Vitaliy Mashkov) 
+* [[`fc6b530290`](https://github.com/nodejs/node/commit/fc6b530290)] - update version to v0.1.189 (Vitaliy Mashkov) 
+* [[`c98549de69`](https://github.com/nodejs/node/commit/c98549de69)] - 0.1.189 (Vitaliy Mashkov) 
 # 0.1.189
 * [[`c98549de69`](https://github.com/nodejs/node/commit/c98549de69)] - 0.1.189 (Vitaliy Mashkov) 
 * [[`b4df893114`](https://github.com/nodejs/node/commit/b4df893114)] - Jenkinsfile update (Vitaliy Mashkov) 

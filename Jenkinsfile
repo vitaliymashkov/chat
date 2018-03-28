@@ -9,13 +9,6 @@ pipeline {
         GITUSER = credentials('f6a9e767-b103-4249-b04f-dca92e758936')
     }
     stages {
-        stage('checkout') {
-            steps {
-                sh 'echo RUN CHECKOUT'
-                sh "git checkout https://${env.GITUSER_USR}:${env.GITUSER_PSW}@${env.GIT_URL} -b ${env.BRANCH} --track origin/${env.BRANCH} ./"
-            }
-
-        }
 
         stage('Set build num') {
             steps {

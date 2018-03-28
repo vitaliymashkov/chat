@@ -11,8 +11,8 @@ pipeline {
         stage('Set build num') {
             steps {
                 sh 'npm install'
-                sh "npm version ${env.VERSION_PREFIX}.${env.BUILD_ID}${env.RELEASE}"
-                sh "echo 'export const VERSION = \"${env.VERSION_PREFIX}.${env.BUILD_ID}${env.RELEASE}\";' > 'src/version.ts'"
+                sh "npm version ${env.VERSION_PREFIX}.${env.BUILD_ID}${params.RELEASE}"
+                sh "echo 'export const VERSION = \"${env.VERSION_PREFIX}.${env.BUILD_ID}${params.RELEASE}\";' > 'src/version.ts'"
             }
         }
 
@@ -21,7 +21,7 @@ pipeline {
             steps {
                 sh 'chmod 777 ./make_changelog.sh'
                 sh 'chmod 777 ./CHANGELOG.md'
-                sh "./make_changelog.sh ${env.VERSION_PREFIX}.${env.BUILD_ID}${env.RELEASE} `head -n 1 CHANGELOG.md | awk '{print \$2}'`"
+                sh "./make_changelog.sh ${env.VERSION_PREFIX}.${env.BUILD_ID}${params.RELEASE} `head -n 1 CHANGELOG.md | awk '{print \$2}'`"
             }
         }
 
@@ -50,7 +50,7 @@ pipeline {
             }
             steps {
                 sh 'git add .'
-                sh "git commit -m \"update version to v${env.VERSION_PREFIX}.${env.BUILD_ID}${env.RELEASE}\""
+                sh "git commit -m \"update version to v${env.VERSION_PREFIX}.${env.BUILD_ID}${params.RELEASE}\""
             }
         }
 

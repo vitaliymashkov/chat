@@ -1,3 +1,7 @@
+# 0.1.191
+* [[`9a8b431d66`](https://github.com/nodejs/node/commit/9a8b431d66)] - 0.1.191 (Vitaliy Mashkov) 
+* [[`8cead6b005`](https://github.com/nodejs/node/commit/8cead6b005)] - update version to v0.1.190 (Vitaliy Mashkov) 
+* [[`2136d8eb93`](https://github.com/nodejs/node/commit/2136d8eb93)] - 0.1.190 (Vitaliy Mashkov) 
 # 0.1.190
 * [[`2136d8eb93`](https://github.com/nodejs/node/commit/2136d8eb93)] - 0.1.190 (Vitaliy Mashkov) 
 * [[`33c6a3f368`](https://github.com/nodejs/node/commit/33c6a3f368)] - Merge remote-tracking branch 'origin/master' (Vitaliy Mashkov) 

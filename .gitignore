@@ -59,11 +59,4 @@ typings/
 # dotenv environment variables file
 .env
 
-
-Будет удалено .idea/
-Будет удалено node_modules/
-Будет удалено package.json
-Будет удалено public/
-Будет удалено src/
-Будет удалено tsconfig.json
-Будет удалено webpack.config.js
+.idea/

@@ -1,9 +1,8 @@
-
 pipeline {
     agent any
     environment {
         VERSION_PREFIX = '0.1'
-        GIT_URL = 'github.com/vitaliymashkov/chat.git'
+        GIT_URL = 'github.com/vitaliymashkov/chat'
         BRANCH = 'master'
         GITUSER = credentials('f6a9e767-b103-4249-b04f-dca92e758936')
     }
@@ -12,7 +11,7 @@ pipeline {
         stage('Set build num') {
             steps {
                 sh 'npm install'
-                sh "npm version 0.1.${env.BUILD_ID}"
+                sh "npm version ${env.VERSION_PREFIX}.${env.BUILD_ID}"
                 sh "echo 'export const VERSION = \"${env.VERSION_PREFIX}.${env.BUILD_ID}\";' > 'src/version.ts'"
             }
         }
@@ -62,8 +61,8 @@ pipeline {
                 }
             }
             steps {
-                sh "git push https://${env.GITUSER_USR}:${env.GITUSER_PSW}@${env.GIT_URL}"
-                sh "git push https://${env.GITUSER_USR}:${env.GITUSER_PSW}@${env.GIT_URL} --tags"
+                sh "git push https://${env.GITUSER_USR}:${env.GITUSER_PSW}@${env.GIT_URL}.git"
+                sh "git push https://${env.GITUSER_USR}:${env.GITUSER_PSW}@${env.GIT_URL}.git --tags"
             }
         }
 

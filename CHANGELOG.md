@@ -1,3 +1,10 @@
+# 0.2.5-DEV
+* [[`1b8dc0e751`](https://github.com/nodejs/node/commit/1b8dc0e751)] - 0.2.5-DEV (Vitaliy Mashkov) 
+* [[`87ab05284e`](https://github.com/nodejs/node/commit/87ab05284e)] - Build TEST (Vitaliy Mashkov) 
+* [[`97f68e3fdc`](https://github.com/nodejs/node/commit/97f68e3fdc)] - Build TEST (Vitaliy Mashkov) 
+* [[`63472bac12`](https://github.com/nodejs/node/commit/63472bac12)] - Build TEST (Vitaliy Mashkov) 
+* [[`dff10cdf0a`](https://github.com/nodejs/node/commit/dff10cdf0a)] - update version to v0.2.2-DEV (Vitaliy Mashkov) 
+* [[`d95b1a56f3`](https://github.com/nodejs/node/commit/d95b1a56f3)] - 0.2.2-DEV (Vitaliy Mashkov) 
 # 0.2.2-DEV
 * [[`d95b1a56f3`](https://github.com/nodejs/node/commit/d95b1a56f3)] - 0.2.2-DEV (Vitaliy Mashkov) 
 * [[`6f255983b1`](https://github.com/nodejs/node/commit/6f255983b1)] - Merge remote-tracking branch 'origin/staging' into staging (Vitaliy Mashkov) 

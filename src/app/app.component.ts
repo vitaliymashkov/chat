@@ -8,7 +8,7 @@ import {VERSION} from '../version';
 })
 export class AppComponent {
     version= VERSION;
-    name= 'TESTING';
+    name= 'TESTING123';
     count: number=0;
     increase() : void {
         this.count++;

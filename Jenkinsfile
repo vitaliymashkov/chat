@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-                sh "git checkout https://${env.GITUSER_USR}:${env.GITUSER_PSW}@${env.GIT_URL} -b ${evn.BRANCH} -track origin/master"
+                sh "git checkout https://${env.GITUSER_USR}:${env.GITUSER_PSW}@${env.GIT_URL} -b ${evn.BRANCH} -track origin/master ./"
             }
 
         }

@@ -1,3 +1,29 @@
+# 0.1.195
+* [[`0e46641214`](https://github.com/nodejs/node/commit/0e46641214)] - 0.1.195 (Vitaliy Mashkov) 
+* [[`3f4f4b8937`](https://github.com/nodejs/node/commit/3f4f4b8937)] - update version to v0.1.194 (Vitaliy Mashkov) 
+* [[`8706a2e4ee`](https://github.com/nodejs/node/commit/8706a2e4ee)] - 0.1.194 (Vitaliy Mashkov) 
+# 0.1.194
+* [[`8706a2e4ee`](https://github.com/nodejs/node/commit/8706a2e4ee)] - 0.1.194 (Vitaliy Mashkov) 
+* [[`a593980605`](https://github.com/nodejs/node/commit/a593980605)] - update version to v0.1.193 (Vitaliy Mashkov) 
+* [[`a51ce640be`](https://github.com/nodejs/node/commit/a51ce640be)] - 0.1.193 (Vitaliy Mashkov) 
+# 0.1.193
+* [[`a51ce640be`](https://github.com/nodejs/node/commit/a51ce640be)] - 0.1.193 (Vitaliy Mashkov) 
+* [[`52d2b90c7c`](https://github.com/nodejs/node/commit/52d2b90c7c)] - update version to v0.1.192 (Vitaliy Mashkov) 
+* [[`02eb0f2faa`](https://github.com/nodejs/node/commit/02eb0f2faa)] - 0.1.192 (Vitaliy Mashkov) 
+# 0.1.192
+* [[`02eb0f2faa`](https://github.com/nodejs/node/commit/02eb0f2faa)] - 0.1.192 (Vitaliy Mashkov) 
+* [[`78d997c789`](https://github.com/nodejs/node/commit/78d997c789)] - update version to v0.1.191 (Vitaliy Mashkov) 
+* [[`9a8b431d66`](https://github.com/nodejs/node/commit/9a8b431d66)] - 0.1.191 (Vitaliy Mashkov) 
+# 0.1.191
+* [[`9a8b431d66`](https://github.com/nodejs/node/commit/9a8b431d66)] - 0.1.191 (Vitaliy Mashkov) 
+* [[`8cead6b005`](https://github.com/nodejs/node/commit/8cead6b005)] - update version to v0.1.190 (Vitaliy Mashkov) 
+* [[`2136d8eb93`](https://github.com/nodejs/node/commit/2136d8eb93)] - 0.1.190 (Vitaliy Mashkov) 
+# 0.1.190
+* [[`2136d8eb93`](https://github.com/nodejs/node/commit/2136d8eb93)] - 0.1.190 (Vitaliy Mashkov) 
+* [[`33c6a3f368`](https://github.com/nodejs/node/commit/33c6a3f368)] - Merge remote-tracking branch 'origin/master' (Vitaliy Mashkov) 
+* [[`af13dc6b96`](https://github.com/nodejs/node/commit/af13dc6b96)] - Jenkinsfile update (Vitaliy Mashkov) 
+* [[`fc6b530290`](https://github.com/nodejs/node/commit/fc6b530290)] - update version to v0.1.189 (Vitaliy Mashkov) 
+* [[`c98549de69`](https://github.com/nodejs/node/commit/c98549de69)] - 0.1.189 (Vitaliy Mashkov) 
 # 0.1.189
 * [[`c98549de69`](https://github.com/nodejs/node/commit/c98549de69)] - 0.1.189 (Vitaliy Mashkov) 
 * [[`b4df893114`](https://github.com/nodejs/node/commit/b4df893114)] - Jenkinsfile update (Vitaliy Mashkov) 

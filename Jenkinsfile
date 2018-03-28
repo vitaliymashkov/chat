@@ -11,9 +11,7 @@ pipeline {
         stage('Get ENV') {
             steps {
                 sh 'env > env.txt'
-                for (String i : readFile('env.txt').split("\r?\n")) {
-                    println i
-                }
+                sh 'cat env.txt'
             }
         }
         stage('checkout') {

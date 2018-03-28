@@ -1,6 +1,6 @@
 {
   "name": "chat",
-  "version": "1.1.11",
+  "version": "0.1.166",
   "scripts": {
     "dev": "webpack-dev-server --hot --open",
     "build": "webpack",
@@ -25,6 +25,7 @@
     "@types/node": "^8.0.47",
     "angular2-template-loader": "^0.6.2",
     "awesome-typescript-loader": "^3.3.0",
+    "changelog-maker": "^2.2.7",
     "generate-changelog": "^1.7.0",
     "html-loader": "^0.5.1",
     "raw-loader": "^0.5.1",

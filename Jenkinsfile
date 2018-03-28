@@ -76,7 +76,7 @@ pipeline {
             }
             steps {
                 script {
-                    if (env.RELEASE == '-DEV') {
+                    if (params.RELEASE == '-DEV') {
                             sshPublisher(publishers: [sshPublisherDesc(configName: 'chat', transfers: [sshTransfer(excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: 'public/', sourceFiles: 'public/**/*')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
                     }
                 }

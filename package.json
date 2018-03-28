@@ -1,6 +1,6 @@
 {
   "name": "chat",
-  "version": "0.1.198",
+  "version": "0.1.199",
   "scripts": {
     "dev": "webpack-dev-server --hot --open",
     "build": "webpack",

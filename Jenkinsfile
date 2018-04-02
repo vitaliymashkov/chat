@@ -26,6 +26,11 @@ pipeline {
 
 
         stage('Make CHANGELOG') {
+            when {
+                expression {
+                    currentBuild.result == null || currentBuild.result == 'SUCCESS'
+                }
+            }
             steps {
                 sh 'chmod 777 ./make_changelog.sh'
                 sh 'chmod 777 ./CHANGELOG.md'
@@ -34,6 +39,11 @@ pipeline {
         }
 
         stage('Build') {
+            when {
+                expression {
+                    currentBuild.result == null || currentBuild.result == 'SUCCESS'
+                }
+            }
             steps {
                 sh 'npm run build'
             }

@@ -9,14 +9,16 @@ pipeline {
 
         stage('Set build num') {
             steps {
-                if (env.BRANCH_NAME == 'master') {
-                    env.VERSION = '${env.VERSION_PREFIX}'
-                } else {
-                    env.VERSION = '${env.VERSION_PREFIX}-DEV.${env.BUILD_ID}'
+                script {
+                    if (env.BRANCH_NAME == 'master') {
+                        env.VERSION = '${env.VERSION_PREFIX}'
+                    } else {
+                        env.VERSION = '${env.VERSION_PREFIX}-DEV.${env.BUILD_ID}'
+                    }
+                    sh 'npm install'
+                    sh "npm version ${env.VERSION}"
+                    sh "echo 'export const VERSION = \"${env.VERSION}\";' > 'src/version.ts'"
                 }
-                sh 'npm install'
-                sh "npm version ${env.VERSION}"
-                sh "echo 'export const VERSION = \"${env.VERSION}\";' > 'src/version.ts'"
             }
         }
 

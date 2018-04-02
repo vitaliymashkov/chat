@@ -13,9 +13,9 @@ pipeline {
             steps {
                 script {
                     if (env.BRANCH_NAME == 'master') {
-                        VERSION = sh(returnStdout: true, script: 'echo ${env.VERSION_PREFIX}')
+                        VERSION = sh(returnStdout: true, script: 'echo ${VERSION_PREFIX}')
                     } else {
-                        VERSION = sh(returnStdout: true, script: 'echo ${env.VERSION_PREFIX}-DEV.${env.BUILD_ID}')
+                        VERSION = sh(returnStdout: true, script: 'echo ${VERSION_PREFIX}-DEV.${BUILD_ID}')
                     }
                 }
             }

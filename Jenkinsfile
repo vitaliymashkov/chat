@@ -1,7 +1,12 @@
 pipeline {
     agent any
     environment {
-        VERSION_PREFIX = '0.2'
+        VERSION_PREFIX = '0.2.1'
+        if (env.BRANCH_NAME == 'master') {
+            VERSION = '${env.VERSION_PREFIX}'
+        } else {
+            VERSION = '${env.VERSION_PREFIX}-DEV.${env.BUILD_ID}'
+        }
         GIT_URL = 'github.com/vitaliymashkov/chat'
         BRANCH = 'staging'
         GITUSER = credentials('f6a9e767-b103-4249-b04f-dca92e758936')
@@ -11,8 +16,8 @@ pipeline {
         stage('Set build num') {
             steps {
                 sh 'npm install'
-                sh "npm version ${env.VERSION_PREFIX}.${env.BUILD_ID}${params.RELEASE}"
-                sh "echo 'export const VERSION = \"${env.VERSION_PREFIX}.${env.BUILD_ID}${params.RELEASE}\";' > 'src/version.ts'"
+                sh "npm version ${env.VERSION}"
+                sh "echo 'export const VERSION = \"${env.VERSION}\";' > 'src/version.ts'"
             }
         }
 
@@ -21,7 +26,7 @@ pipeline {
             steps {
                 sh 'chmod 777 ./make_changelog.sh'
                 sh 'chmod 777 ./CHANGELOG.md'
-                sh "./make_changelog.sh ${env.VERSION_PREFIX}.${env.BUILD_ID}${params.RELEASE} `head -n 1 CHANGELOG.md | awk '{print \$2}'`"
+                sh "./make_changelog.sh ${env.VERSION} `head -n 1 CHANGELOG.md | awk '{print \$2}'`"
             }
         }
 
@@ -50,7 +55,7 @@ pipeline {
             }
             steps {
                 sh 'git add .'
-                sh "git commit -m \"update version to v${env.VERSION_PREFIX}.${env.BUILD_ID}${params.RELEASE}\""
+                sh "git commit -m \"update version to v${env.VERSION}\""
             }
         }
 
@@ -76,8 +81,10 @@ pipeline {
             }
             steps {
                 script {
-                    if (params.RELEASE == '-DEV') {
-                            sshPublisher(publishers: [sshPublisherDesc(configName: 'chat', transfers: [sshTransfer(excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: 'public/', sourceFiles: 'public/**/*')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+                    if (env.BRANCH_NAME == 'master') {
+                        echo "Not apply deploy"
+                    } else {
+                        sshPublisher(publishers: [sshPublisherDesc(configName: 'chat', transfers: [sshTransfer(excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: 'public/', sourceFiles: 'public/**/*')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
                     }
                 }
             }

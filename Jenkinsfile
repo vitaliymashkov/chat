@@ -17,9 +17,9 @@ pipeline {
                     } else {
                         VERSION = sh(returnStdout: true, script: 'echo ${env.VERSION_PREFIX}-DEV.${env.BUILD_ID}')
                     }
-                    sh 'npm install'
-                    sh "npm version $VERSION"
-                    sh "echo 'export const VERSION = \"$VERSION\";' > 'src/version.ts'"
+                    sh(returnStdout: false, script: 'npm install')
+                    sh(returnStdout: false, script: 'npm version ${VERSION}')
+                    sh(returnStdout: false, script: 'echo 'export const VERSION = \"${VERSION}\";' > 'src/version.ts'')
                 }
             }
         }

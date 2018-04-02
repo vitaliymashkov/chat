@@ -34,7 +34,7 @@ pipeline {
                 sh "echo 'export const VERSION = \"${VERSION}\";' > 'src/version.ts'"
                 sh 'chmod 777 ./make_changelog.sh'
                 sh 'chmod 777 ./CHANGELOG.md'
-                sh "./make_changelog.sh $VERSION `head -n 1 CHANGELOG.md | awk '{print \$2}'`"
+                sh "./make_changelog.sh '$VERSION' `head -n 1 CHANGELOG.md | awk '{print \$2}'`"
             }
         }
 

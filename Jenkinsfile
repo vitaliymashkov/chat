@@ -2,11 +2,6 @@ pipeline {
     agent any
     environment {
         VERSION_PREFIX = '0.2.1'
-        if (env.BRANCH_NAME == 'master') {
-            VERSION = '${env.VERSION_PREFIX}'
-        } else {
-            VERSION = '${env.VERSION_PREFIX}-DEV.${env.BUILD_ID}'
-        }
         GIT_URL = 'github.com/vitaliymashkov/chat'
         BRANCH = 'staging'
         GITUSER = credentials('f6a9e767-b103-4249-b04f-dca92e758936')
@@ -15,6 +10,11 @@ pipeline {
 
         stage('Set build num') {
             steps {
+                if (env.BRANCH_NAME == 'master') {
+                    env.VERSION = '${env.VERSION_PREFIX}'
+                } else {
+                    env.VERSION = '${env.VERSION_PREFIX}-DEV.${env.BUILD_ID}'
+                }
                 sh 'npm install'
                 sh "npm version ${env.VERSION}"
                 sh "echo 'export const VERSION = \"${env.VERSION}\";' > 'src/version.ts'"

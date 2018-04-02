@@ -29,6 +29,7 @@ pipeline {
                 }
             }
             steps {
+                echo sh(returnStdout: true, script: 'env')
                 sh 'npm install'
                 sh 'npm version ${VERSION}'
                 sh "echo 'export const VERSION = \"${VERSION}\";' > 'src/version.ts'"

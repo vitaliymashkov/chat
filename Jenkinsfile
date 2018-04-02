@@ -1,3 +1,5 @@
+def VERSION = 'UNKNOWN'
+
 pipeline {
     agent any
     environment {

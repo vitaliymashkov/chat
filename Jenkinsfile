@@ -11,13 +11,13 @@ pipeline {
             steps {
                 script {
                     if (env.BRANCH_NAME == 'master') {
-                        env.VERSION = '${env.VERSION_PREFIX}'
+                        VERSION = '${env.VERSION_PREFIX}'
                     } else {
-                        env.VERSION = '${env.VERSION_PREFIX}-DEV.${env.BUILD_ID}'
+                        VERSION = '${env.VERSION_PREFIX}-DEV.${env.BUILD_ID}'
                     }
                     sh 'npm install'
-                    sh "npm version ${env.VERSION}"
-                    sh "echo 'export const VERSION = \"${env.VERSION}\";' > 'src/version.ts'"
+                    sh "npm version $VERSION"
+                    sh "echo 'export const VERSION = \"$VERSION\";' > 'src/version.ts'"
                 }
             }
         }
@@ -27,7 +27,7 @@ pipeline {
             steps {
                 sh 'chmod 777 ./make_changelog.sh'
                 sh 'chmod 777 ./CHANGELOG.md'
-                sh "./make_changelog.sh ${env.VERSION} `head -n 1 CHANGELOG.md | awk '{print \$2}'`"
+                sh "./make_changelog.sh $VERSION `head -n 1 CHANGELOG.md | awk '{print \$2}'`"
             }
         }
 
@@ -56,7 +56,7 @@ pipeline {
             }
             steps {
                 sh 'git add .'
-                sh "git commit -m \"update version to v${env.VERSION}\""
+                sh "git commit -m \"update version to v$VERSION\""
             }
         }
 

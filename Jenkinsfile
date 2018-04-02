@@ -11,9 +11,9 @@ pipeline {
             steps {
                 script {
                     if (env.BRANCH_NAME == 'master') {
-                        VERSION = '${env.VERSION_PREFIX}'
+                        VERSION = sh(returnStdout: true, script: 'echo ${env.VERSION_PREFIX}')
                     } else {
-                        VERSION = '${env.VERSION_PREFIX}-DEV.${env.BUILD_ID}'
+                        VERSION = sh(returnStdout: true, script: 'echo ${env.VERSION_PREFIX}-DEV.${env.BUILD_ID}')
                     }
                     sh 'npm install'
                     sh "npm version $VERSION"

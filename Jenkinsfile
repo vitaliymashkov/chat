@@ -12,7 +12,7 @@ pipeline {
         stage('Set build num') {
             steps {
                 script {
-                    if (env.BRANCH_NAME == 'master') {
+                    if (env.GIT_LOCAL_BRANCH == 'master') {
                         VERSION = sh(returnStdout: true, script: 'echo ${VERSION_PREFIX}')
                     } else {
                         VERSION = sh(returnStdout: true, script: 'echo ${VERSION_PREFIX}-DEV.${BUILD_ID}')
@@ -95,7 +95,7 @@ pipeline {
             }
             steps {
                 script {
-                    if (env.BRANCH_NAME == 'master') {
+                    if (env.GIT_LOCAL_BRANCH == 'master') {
                         echo "Not apply deploy"
                     } else {
                         sshPublisher(publishers: [sshPublisherDesc(configName: 'chat', transfers: [sshTransfer(excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: 'public/', sourceFiles: 'public/**/*')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])

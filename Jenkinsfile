@@ -1,3 +1,5 @@
+def VERSION = 'UNKNOWN'
+
 pipeline {
     agent any
     environment {
@@ -9,22 +11,40 @@ pipeline {
 
         stage('Set build num') {
             steps {
-                sh 'npm install'
-                sh "npm version ${env.VERSION_PREFIX}.${env.BUILD_ID}${params.RELEASE}"
-                sh "echo 'export const VERSION = \"${env.VERSION_PREFIX}.${env.BUILD_ID}${params.RELEASE}\";' > 'src/version.ts'"
+                script {
+                    if (env.GIT_LOCAL_BRANCH == 'master') {
+                        VERSION = sh(returnStdout: true, script: 'echo "${VERSION_PREFIX}";')
+                    } else {
+                        VERSION = sh(returnStdout: true, script: 'echo "${VERSION_PREFIX}-DEV.${BUILD_ID}";')
+                    }
+                }
             }
         }
 
 
         stage('Make CHANGELOG') {
+            when {
+                expression {
+                    currentBuild.result == null || currentBuild.result == 'SUCCESS'
+                }
+            }
             steps {
+                echo sh(returnStdout: true, script: 'env')
+                sh 'npm install'
+                sh 'npm version ${VERSION}'
+                sh "echo 'export const VERSION = \"${VERSION}\";' > 'src/version.ts'"
                 sh 'chmod 777 ./make_changelog.sh'
                 sh 'chmod 777 ./CHANGELOG.md'
-                sh "./make_changelog.sh ${env.VERSION_PREFIX}.${env.BUILD_ID}${params.RELEASE} `head -n 1 CHANGELOG.md | awk '{print \$2}'`"
+                sh "./make_changelog.sh '$VERSION' `head -n 1 CHANGELOG.md | awk '{print \$2}'`"
             }
         }
 
         stage('Build') {
+            when {
+                expression {
+                    currentBuild.result == null || currentBuild.result == 'SUCCESS'
+                }
+            }
             steps {
                 sh 'npm run build'
             }
@@ -49,7 +69,7 @@ pipeline {
             }
             steps {
                 sh 'git add .'
-                sh "git commit -m \"update version to v${env.VERSION_PREFIX}.${env.BUILD_ID}${params.RELEASE}\""
+                sh "git commit -m \"update version to v$VERSION\""
             }
         }
 
@@ -75,8 +95,10 @@ pipeline {
             }
             steps {
                 script {
-                    if (params.RELEASE == '-DEV') {
-                            sshPublisher(publishers: [sshPublisherDesc(configName: 'chat', transfers: [sshTransfer(excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: 'public/', sourceFiles: 'public/**/*')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+                    if (env.GIT_LOCAL_BRANCH == 'master') {
+                        echo "Not apply deploy"
+                    } else {
+                        sshPublisher(publishers: [sshPublisherDesc(configName: 'chat', transfers: [sshTransfer(excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: 'public/', sourceFiles: 'public/**/*')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
                     }
                 }
             }

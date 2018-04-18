@@ -3,7 +3,7 @@ def VERSION = 'UNKNOWN'
 pipeline {
     agent any
     environment {
-        VERSION_PREFIX = '0.2.1'
+        VERSION_PREFIX = '0.2.2'
         GIT_URL = 'github.com/vitaliymashkov/chat'
         GITUSER = credentials('f6a9e767-b103-4249-b04f-dca92e758936')
     }

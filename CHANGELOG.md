@@ -1,8 +1,12 @@
-# 0.2.201
-* [[`d8bdd5a839`](https://github.com/nodejs/node/commit/d8bdd5a839)] - 0.2.201 (Vitaliy Mashkov) 
-* [[`5f9ec17e1e`](https://github.com/nodejs/node/commit/5f9ec17e1e)] - Merge branch 'staging' (Vitaliy Mashkov) 
+# 0.2.7-DEV
+* [[`6a2b0ac728`](https://github.com/nodejs/node/commit/6a2b0ac728)] - 0.2.7-DEV (Vitaliy Mashkov) 
+* [[`f115d31a5f`](https://github.com/nodejs/node/commit/f115d31a5f)] - update version to v0.2.6-DEV (Vitaliy Mashkov) 
+* [[`682db0a5d8`](https://github.com/nodejs/node/commit/682db0a5d8)] - 0.2.6-DEV (Vitaliy Mashkov) 
+# 0.2.6-DEV
+* [[`682db0a5d8`](https://github.com/nodejs/node/commit/682db0a5d8)] - 0.2.6-DEV (Vitaliy Mashkov) 
 * [[`8353596968`](https://github.com/nodejs/node/commit/8353596968)] - update version to v0.2.5-DEV (Vitaliy Mashkov) 
 * [[`1b8dc0e751`](https://github.com/nodejs/node/commit/1b8dc0e751)] - 0.2.5-DEV (Vitaliy Mashkov) 
+* [[`10ed48c7e7`](https://github.com/nodejs/node/commit/10ed48c7e7)] - **TEST-1**: test (Vitaliy Mashkov) 
 # 0.2.5-DEV
 * [[`1b8dc0e751`](https://github.com/nodejs/node/commit/1b8dc0e751)] - 0.2.5-DEV (Vitaliy Mashkov) 
 * [[`87ab05284e`](https://github.com/nodejs/node/commit/87ab05284e)] - Build TEST (Vitaliy Mashkov) 

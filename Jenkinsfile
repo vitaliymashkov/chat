@@ -24,7 +24,7 @@ try {
 
 node('webui-staging')  {
     checkout scm
-    env.BRANCH_NAME = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
+    env.BRANCH_NAME = env.BRANCH_NAME || sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
     parameters {
         string(name: 'S3_BUCKET', defaultValue: 'ats-contacts-importers-sam-live', description: '')
         string(name: 'S3_PREFIX', defaultValue: 'live', description: '')

@@ -24,51 +24,45 @@ try {
 
 node('webui-staging')  {
     checkout scm
-    // env.BRANCH_NAME = env.BRANCH_NAME || sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
+    if (env.BRANCH_NAME == null) {
+        env.BRANCH_NAME = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
+    }
     if (env.BRANCH_NAME == "master") {
-        parameters {
-            string(name: 'S3_BUCKET', defaultValue: 'ats-contacts-importers-sam-live', description: '')
-            string(name: 'S3_PREFIX', defaultValue: 'live', description: '')
-            string(name: 'AWS_REGION', defaultValue: 'us-east-1', description: '')
-            string(name: 'CAPABILITY', defaultValue: 'CAPABILITY_IAM CAPABILITY_AUTO_EXPAND', description: '')
-            string(name: 'SLACK_CHANEL', defaultValue: 'webui_dev_deploy', description: '')
-            string(name: 'SAM_TEMPLATE', defaultValue: 'live.yaml', description: '')
-            string(name: 'SAM_OUTPUT_TEMPLATE', defaultValue: 'live-packaged.yaml', description: '')
-            string(name: 'STACK_NAME', defaultValue: 'ats-importers-live', description: '')
-        }
+        env.S3_BUCKET = 'ats-contacts-importers-sam-live'
+        env.S3_PREFIX = 'live'
+        env.AWS_REGION = 'us-east-1'
+        env.CAPABILITY = 'CAPABILITY_IAM CAPABILITY_AUTO_EXPAND'
+        env.SLACK_CHANEL = 'webui_dev_deploy'
+        env.SAM_TEMPLATE = 'live.yaml'
+        env.SAM_OUTPUT_TEMPLATE = 'live-packaged.yaml'
+        env.STACK_NAME = 'ats-importers-live'
     } else if (env.BRANCH_NAME == "master_eu") {
-        parameters {
-            string(name: 'S3_BUCKET', defaultValue: 'ats-contacts-importers-sam-live-eu', description: '')
-            string(name: 'S3_PREFIX', defaultValue: 'live', description: '')
-            string(name: 'AWS_REGION', defaultValue: 'eu-central-1', description: '')
-            string(name: 'CAPABILITY', defaultValue: 'CAPABILITY_IAM CAPABILITY_AUTO_EXPAND', description: '')
-            string(name: 'SLACK_CHANEL', defaultValue: 'webui_dev_deploy', description: '')
-            string(name: 'SAM_TEMPLATE', defaultValue: 'live-eu.yaml', description: '')
-            string(name: 'SAM_OUTPUT_TEMPLATE', defaultValue: 'live-eu-packaged.yaml', description: '')
-            string(name: 'STACK_NAME', defaultValue: 'ats-importers-live-eu', description: '')
-        }
+        env.S3_BUCKET = 'ats-contacts-importers-sam-live-eu'
+        env.S3_PREFIX = 'live'
+        env.AWS_REGION = 'eu-central-1'
+        env.CAPABILITY = 'CAPABILITY_IAM CAPABILITY_AUTO_EXPAND'
+        env.SLACK_CHANEL = 'webui_dev_deploy'
+        env.SAM_TEMPLATE = 'live-eu.yaml'
+        env.SAM_OUTPUT_TEMPLATE = 'live-eu-packaged.yaml'
+        env.STACK_NAME = 'ats-importers-live-eu'
     } else if (env.BRANCH_NAME == "staging") {
-        parameters {
-            string(name: 'S3_BUCKET', defaultValue: 'ats-contacts-importers-sam', description: '')
-            string(name: 'S3_PREFIX', defaultValue: 'staging', description: '')
-            string(name: 'AWS_REGION', defaultValue: 'us-east-2', description: '')
-            string(name: 'CAPABILITY', defaultValue: 'CAPABILITY_IAM CAPABILITY_AUTO_EXPAND', description: '')
-            string(name: 'SLACK_CHANEL', defaultValue: 'webui_dev_deploy', description: '')
-            string(name: 'SAM_TEMPLATE', defaultValue: 'staging.yaml', description: '')
-            string(name: 'SAM_OUTPUT_TEMPLATE', defaultValue: 'staging-packaged.yaml', description: '')
-            string(name: 'STACK_NAME', defaultValue: 'ats-importers-staging', description: '')
-        }
+        env.S3_BUCKET = 'ats-contacts-importers-sam'
+        env.S3_PREFIX = 'staging'
+        env.AWS_REGION = 'us-east-2'
+        env.CAPABILITY = 'CAPABILITY_IAM CAPABILITY_AUTO_EXPAND'
+        env.SLACK_CHANEL = 'webui_dev_deploy'
+        env.SAM_TEMPLATE = 'staging.yaml'
+        env.SAM_OUTPUT_TEMPLATE = 'staging-packaged.yaml'
+        env.STACK_NAME = 'ats-importers-staging'
     } else {
-        parameters {
-            string(name: 'S3_BUCKET', defaultValue: 'ats-contacts-importers-sam', description: '')
-            string(name: 'S3_PREFIX', defaultValue: 'dev', description: '')
-            string(name: 'AWS_REGION', defaultValue: 'us-east-2', description: '')
-            string(name: 'CAPABILITY', defaultValue: 'CAPABILITY_IAM CAPABILITY_AUTO_EXPAND', description: '')
-            string(name: 'SLACK_CHANEL', defaultValue: 'webui_dev_deploy', description: '')
-            string(name: 'SAM_TEMPLATE', defaultValue: 'dev.yaml', description: '')
-            string(name: 'SAM_OUTPUT_TEMPLATE', defaultValue: 'dev-packaged.yaml', description: '')
-            string(name: 'STACK_NAME', defaultValue: 'ats-importers-dev', description: '')
-        }
+        env.S3_BUCKET = 'ats-contacts-importers-sam'
+        env.S3_PREFIX = 'dev'
+        env.AWS_REGION = 'us-east-2'
+        env.CAPABILITY = 'CAPABILITY_IAM CAPABILITY_AUTO_EXPAND'
+        env.SLACK_CHANEL = 'webui_dev_deploy'
+        env.SAM_TEMPLATE = 'dev.yaml'
+        env.SAM_OUTPUT_TEMPLATE = 'dev-packaged.yaml'
+        env.STACK_NAME = 'ats-importers-dev'
     }
     env.PATH = "/home/ubuntu/.local/bin:/usr/local/bin:${env.PATH}"  // for nodejs projects
     // Mark the code checkout 'stage'
@@ -77,15 +71,14 @@ node('webui-staging')  {
         changelog = changeLogs()
         if (changelog) {
             changelog = "Changes in *${repo}* repository *${env.BRANCH_NAME}* branch detected\n" + changelog
-            slackSend channel: params.SLACK_CHANEL, message: "${changelog}"
         } else {
             commitHash = sh(returnStdout: true, script: 'git rev-parse HEAD').trim().take(7)
             commitText = sh(returnStdout: true, script: 'git show -s --format=format:"*%s*  _by %an_" HEAD').trim()
             changelog = "No changes in *${repo}* repository *${env.BRANCH_NAME}* branch detected\n"
             changelog = changelog + "Building for commit: \n`${commitHash}` ${commitText}"
-            slackSend channel: params.SLACK_CHANEL, message: "${changelog}"
         }
-        slackSend channel: params.SLACK_CHANEL, message: "--template-file ${params.SAM_TEMPLATE}\n--s3-bucket ${params.S3_BUCKET}\n--output-template-file ${params.SAM_OUTPUT_TEMPLATE}\n--region ${params.AWS_REGION}\n--s3-prefix ${params.S3_PREFIX}"
+        slackSend channel: env.SLACK_CHANEL, message: "${changelog}"
+        slackSend channel: env.SLACK_CHANEL, message: "--template-file ${env.SAM_TEMPLATE}\n--s3-bucket ${env.S3_BUCKET}\n--output-template-file ${env.SAM_OUTPUT_TEMPLATE}\n--region ${env.AWS_REGION}\n--s3-prefix ${env.S3_PREFIX}"
     }
 }
 
@@ -99,7 +92,7 @@ node('webui-staging')  {
     timeSpent = "\nTime spent: ${timeDiff(start)}"
 
     if (err) {
-        slackSend channel: params.SLACK_CHANEL, color: 'danger', message: "Build failed: ${jobInfo} ${timeSpent}"
+        slackSend channel: env.SLACK_CHANEL, color: 'danger', message: "Build failed: ${jobInfo} ${timeSpent}"
         throw err
     } else {
         if (currentBuild.previousBuild == null) {
@@ -109,9 +102,9 @@ node('webui-staging')  {
         } else {
             buildStatus = 'Back to normal'
         }
-        slackSend channel: params.SLACK_CHANEL, color: 'good', message: "${buildStatus}: ${jobInfo} ${timeSpent}"
+        slackSend channel: env.SLACK_CHANEL, color: 'good', message: "${buildStatus}: ${jobInfo} ${timeSpent}"
 
-        slackSend channel: params.SLACK_CHANEL, color: 'good', message: "*${env.BRANCH_NAME}* branch deployed"
+        slackSend channel: env.SLACK_CHANEL, color: 'good', message: "*${env.BRANCH_NAME}* branch deployed"
     }
 }
 

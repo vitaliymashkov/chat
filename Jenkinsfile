@@ -46,6 +46,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 sh 'echo "Checkout"'
+                echo env.BRANCH_NAME
                 checkout scm
                 script {
                     stepStart = new Date()

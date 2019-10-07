@@ -59,6 +59,7 @@ pipeline {
                         changelog = changelog + "Building for commit: \n`${commitHash}` ${commitText}"
                     }
                 }
+                echo changelog
                 // slackSend channel: env.SLACK_CHANEL, message: "${changelog}"
                 sh "npm version ${env.VERSION_PREFIX}-${env.BUILD_ID} --allow-same-version  --no-git-tag-version"
                 sh 'npm install'
